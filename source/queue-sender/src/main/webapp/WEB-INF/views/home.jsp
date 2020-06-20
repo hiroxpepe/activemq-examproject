@@ -10,7 +10,7 @@
     </head>
     <body>
         <div class="generic-container">
-            <div class="well lead">Welcome to CrazyDeals [With JMS Magic]</div>
+            <div class="well lead">Welcome to the Shop</div>
             <span class="well floatRight">
                 <a href="<c:url value='/newOrder.html' />">Place an order</a>
             </span>

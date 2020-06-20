@@ -17,8 +17,7 @@
 
     <!-- Activemq connection factory -->
     <bean id="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
-        <!--<property name="brokerURL" value="${jms.broker.url}"/>-->
-        <property name="brokerURL" value="tcp://localhost:61616"/>
+        <property name="brokerURL" value="${jms.broker.url}"/>
     </bean>
 
     <!-- ConnectionFactory Definition -->

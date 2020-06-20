@@ -46,7 +46,6 @@
         <session-timeout>30</session-timeout>
     </session-config>
 
-    <!-- start with this page (it's necessary.) -->
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

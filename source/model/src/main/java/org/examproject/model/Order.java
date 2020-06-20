@@ -2,11 +2,6 @@ package org.examproject.model;
 
 import java.io.Serializable;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
-@Component
-@Scope(value="prototype")
 public class Order implements Serializable {
 
     private String orderId;
