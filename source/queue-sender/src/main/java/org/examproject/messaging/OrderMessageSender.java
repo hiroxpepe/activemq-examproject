@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 
 import org.examproject.model.Order;
 
+/**
+ * @author h.adachi
+ */
 @Component("orderMessageSender")
 public class OrderMessageSender {
 

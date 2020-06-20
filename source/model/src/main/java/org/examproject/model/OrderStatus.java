@@ -1,5 +1,8 @@
 package org.examproject.model;
 
+/**
+ * @author h.adachi
+ */
 public enum OrderStatus {
 
     CREATED("Created"),
@@ -25,4 +28,5 @@ public enum OrderStatus {
     public String getName() {
         return this.name();
     }
+    
 }

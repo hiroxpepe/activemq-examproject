@@ -2,10 +2,15 @@ package org.examproject.model;
 
 import java.io.Serializable;
 
+/**
+ * @author h.adachi
+ */
 public class InventoryResponse implements Serializable {
 
     private String orderId;
+
     private int returnCode;
+
     private String comment;
 
     public String getOrderId() {

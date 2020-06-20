@@ -2,6 +2,9 @@ package org.examproject.model;
 
 import java.io.Serializable;
 
+/**
+ * @author h.adachi
+ */
 public class Order implements Serializable {
 
     private String orderId;

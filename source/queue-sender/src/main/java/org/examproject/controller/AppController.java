@@ -2,7 +2,9 @@ package org.examproject.controller;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -12,11 +14,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.examproject.model.Order;
 import org.examproject.service.OrderService;
 
+/**
+ * @author h.adachi
+ */
+@Slf4j
+@RequiredArgsConstructor
 @Controller
 public class AppController {
 
-    @Autowired
-    OrderService orderService;
+    @NonNull
+    private final OrderService orderService;
+
+    ///////////////////////////////////////////////////////////////////////////
+    // public methods
 
     @RequestMapping(
         value="/home.html",

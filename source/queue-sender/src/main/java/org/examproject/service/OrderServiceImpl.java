@@ -15,6 +15,9 @@ import org.examproject.service.OrderRepository;
 import org.examproject.service.OrderService;
 import org.examproject.util.BasicUtil;
 
+/**
+ * @author h.adachi
+ */
 @Service("orderService")
 public class OrderServiceImpl implements OrderService {
 
@@ -39,7 +42,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void updateOrder(InventoryResponse response) {
-
         Order order = orderRepository.getOrder(response.getOrderId());
         if (response.getReturnCode() == 200) {
             order.setStatus(OrderStatus.CONFIRMED);

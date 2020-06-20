@@ -4,6 +4,9 @@ import java.util.Map;
 
 import org.examproject.model.Order;
 
+/**
+ * @author h.adachi
+ */
 public interface OrderRepository {
 
     public void putOrder(Order order);
