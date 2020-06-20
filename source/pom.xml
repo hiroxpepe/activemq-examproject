@@ -18,6 +18,8 @@
     <modules>
         <module>queue-receiver</module>
         <module>queue-sender</module>
+        <module>queue-receiver-service</module>
+        <module>queue-sender-service</module>
         <module>service</module>
         <module>model</module>
     </modules>

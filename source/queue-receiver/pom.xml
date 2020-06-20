@@ -22,10 +22,10 @@
         <!--//////////////////////////////////////////////////////////////////////////-->
         <!-- USER LIB -->
 
-        <!-- service -->
+        <!-- queue-receiver-service -->
         <dependency>
             <groupId>org.examproject.activemq</groupId>
-            <artifactId>activemq-service</artifactId>
+            <artifactId>activemq-receiver-service</artifactId>
             <version>${version}</version>
         </dependency>
 

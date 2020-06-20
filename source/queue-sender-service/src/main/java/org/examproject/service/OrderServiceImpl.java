@@ -11,9 +11,6 @@ import org.springframework.stereotype.Service;
 import org.examproject.model.Response;
 import org.examproject.model.Order;
 import org.examproject.model.OrderStatus;
-import org.examproject.service.MessageSender;
-import org.examproject.service.OrderRepository;
-import org.examproject.service.OrderService;
 import org.examproject.util.BasicUtil;
 
 /**

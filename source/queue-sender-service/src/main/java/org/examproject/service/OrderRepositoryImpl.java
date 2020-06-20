@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import org.examproject.model.Order;
 import org.examproject.service.OrderRepository;
+import org.examproject.service.OrderRepository;
 
 /**
  * @author h.adachi

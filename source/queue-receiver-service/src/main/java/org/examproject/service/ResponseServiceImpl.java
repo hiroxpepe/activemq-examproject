@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 //import org.examproject.messaging.OrderInventoryMessageSender;
 import org.examproject.model.Response;
 import org.examproject.model.Order;
-import org.examproject.service.MessageSender;
 
 @Service("responseService")
 public class ResponseServiceImpl implements ResponseService {
