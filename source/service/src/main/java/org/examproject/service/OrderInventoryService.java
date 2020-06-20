@@ -1,6 +1,6 @@
-package com.studio.meowtoon.service;
+package org.examproject.service;
 
-import com.studio.meowtoon.model.Order;
+import org.examproject.model.Order;
 
 public interface OrderInventoryService {
 

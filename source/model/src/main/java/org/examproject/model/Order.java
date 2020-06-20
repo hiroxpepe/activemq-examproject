@@ -1,4 +1,4 @@
-package com.studio.meowtoon.model;
+package org.examproject.model;
 
 import java.io.Serializable;
 

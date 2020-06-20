@@ -1,4 +1,4 @@
-package com.studio.meowtoon.controller;
+package org.examproject.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

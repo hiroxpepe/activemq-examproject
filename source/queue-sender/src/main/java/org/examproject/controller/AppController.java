@@ -1,4 +1,4 @@
-package com.studio.meowtoon.controller;
+package org.examproject.controller;
 
 import javax.validation.Valid;
 
@@ -9,8 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.studio.meowtoon.model.Order;
-import com.studio.meowtoon.service.OrderService;
+import org.examproject.model.Order;
+import org.examproject.service.OrderService;
 
 @Controller
 public class AppController {

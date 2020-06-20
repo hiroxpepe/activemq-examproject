@@ -1,4 +1,4 @@
-package com.studio.meowtoon.messaging;
+package org.examproject.messaging;
 
 import javax.jms.JMSException;
 
@@ -10,9 +10,9 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.stereotype.Component;
 
-//import com.studio.meowtoon.model.InventoryResponse;
-import com.studio.meowtoon.model.Order;
-//import com.studio.meowtoon.service.OrderService;
+//import org.examproject.model.InventoryResponse;
+import org.examproject.model.Order;
+//import org.examproject.service.OrderService;
 
 @Component("orderMessageReceiver")
 public class OrderMessageReceiver {

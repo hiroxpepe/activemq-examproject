@@ -1,12 +1,12 @@
-package com.studio.meowtoon.service;
+package org.examproject.service;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Service;
 
-import com.studio.meowtoon.model.Order;
-import com.studio.meowtoon.service.OrderRepository;
+import org.examproject.model.Order;
+import org.examproject.service.OrderRepository;
 
 @Service("orderRepository")
 public class OrderRepositoryImpl implements OrderRepository {

@@ -1,4 +1,4 @@
-package com.studio.meowtoon.service;
+package org.examproject.service;
 
 import java.util.Map;
 
@@ -7,13 +7,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.studio.meowtoon.messaging.OrderMessageSender;
-import com.studio.meowtoon.model.InventoryResponse;
-import com.studio.meowtoon.model.Order;
-import com.studio.meowtoon.model.OrderStatus;
-import com.studio.meowtoon.service.OrderRepository;
-import com.studio.meowtoon.service.OrderService;
-import com.studio.meowtoon.util.BasicUtil;
+import org.examproject.messaging.OrderMessageSender;
+import org.examproject.model.InventoryResponse;
+import org.examproject.model.Order;
+import org.examproject.model.OrderStatus;
+import org.examproject.service.OrderRepository;
+import org.examproject.service.OrderService;
+import org.examproject.util.BasicUtil;
 
 @Service("orderService")
 public class OrderServiceImpl implements OrderService {

@@ -1,4 +1,4 @@
-package com.studio.meowtoon.util;
+package org.examproject.util;
 
 import java.util.UUID;
 

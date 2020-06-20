@@ -1,9 +1,9 @@
-package com.studio.meowtoon.service;
+package org.examproject.service;
 
 import java.util.Map;
 
-import com.studio.meowtoon.model.InventoryResponse;
-import com.studio.meowtoon.model.Order;
+import org.examproject.model.InventoryResponse;
+import org.examproject.model.Order;
 
 public interface OrderService {
 

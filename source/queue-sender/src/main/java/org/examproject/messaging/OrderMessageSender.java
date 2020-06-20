@@ -1,4 +1,4 @@
-package com.studio.meowtoon.messaging;
+package org.examproject.messaging;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -10,7 +10,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Component;
 
-import com.studio.meowtoon.model.Order;
+import org.examproject.model.Order;
 
 @Component("orderMessageSender")
 public class OrderMessageSender {

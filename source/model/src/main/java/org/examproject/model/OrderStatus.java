@@ -1,4 +1,4 @@
-package com.studio.meowtoon.model;
+package org.examproject.model;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;

@@ -26,7 +26,7 @@
         <priority value="info"/>
     </category>
 
-    <category name="com.studio.meowtoon" >
+    <category name="org.examproject" >
         <priority value="info"/>
     </category>
 
