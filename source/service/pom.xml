@@ -4,7 +4,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.examproject.activemq</groupId>
-    <artifactId>activemq-service</artifactId>
+    <artifactId>exmp-service</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
     <name>service</name>
@@ -21,7 +21,7 @@
         <!-- model -->
         <dependency>
             <groupId>org.examproject.activemq</groupId>
-            <artifactId>activemq-model</artifactId>
+            <artifactId>exmp-model</artifactId>
             <version>${version}</version>
         </dependency>
 

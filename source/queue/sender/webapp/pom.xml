@@ -4,10 +4,10 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.examproject.activemq</groupId>
-    <artifactId>exmp-activemq-sender</artifactId>
+    <artifactId>exmp-queue-sender-webapp</artifactId>
     <packaging>war</packaging>
     <version>1.0.0</version>
-    <name>queue-sender</name>
+    <name>queue-sender-webapp</name>
 
     <properties>
         <spring.version>5.2.6.RELEASE</spring.version>
@@ -25,7 +25,7 @@
         <!-- queue-sender-service -->
         <dependency>
             <groupId>org.examproject.activemq</groupId>
-            <artifactId>activemq-sender-service</artifactId>
+            <artifactId>exmp-queue-sender-service</artifactId>
             <version>${version}</version>
         </dependency>
 

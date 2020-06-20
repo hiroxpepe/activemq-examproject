@@ -4,10 +4,10 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.examproject.activemq</groupId>
-    <artifactId>activemq-sender-service</artifactId>
+    <artifactId>exmp-queue-receiver-service</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
-    <name>queue-sender-service</name>
+    <name>queue-receiver-service</name>
 
     <properties>
         <java.version>1.8</java.version>
@@ -21,7 +21,7 @@
         <!-- service -->
         <dependency>
             <groupId>org.examproject.activemq</groupId>
-            <artifactId>activemq-service</artifactId>
+            <artifactId>exmp-service</artifactId>
             <version>${version}</version>
         </dependency>
 

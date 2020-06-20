@@ -4,7 +4,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.examproject.activemq</groupId>
-    <artifactId>activemq-project</artifactId>
+    <artifactId>exmp-project</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
     <name>project</name>
@@ -16,10 +16,10 @@
     </properties>
 
     <modules>
-        <module>queue-receiver</module>
-        <module>queue-sender</module>
-        <module>queue-receiver-service</module>
-        <module>queue-sender-service</module>
+        <module>queue/receiver/webapp</module>
+        <module>queue/sender//webapp</module>
+        <module>queue/receiver/service</module>
+        <module>queue/sender/service</module>
         <module>service</module>
         <module>model</module>
     </modules>

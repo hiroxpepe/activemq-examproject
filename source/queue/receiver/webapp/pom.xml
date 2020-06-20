@@ -4,10 +4,10 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.examproject.activemq</groupId>
-    <artifactId>exmp-activemq-receiver</artifactId>
+    <artifactId>exmp-queue-receiver-webap</artifactId>
     <packaging>war</packaging>
     <version>1.0.0</version>
-    <name>queue-receiver</name>
+    <name>queue-receiver-webapp</name>
 
     <properties>
         <spring.version>5.2.6.RELEASE</spring.version>
@@ -25,7 +25,7 @@
         <!-- queue-receiver-service -->
         <dependency>
             <groupId>org.examproject.activemq</groupId>
-            <artifactId>activemq-receiver-service</artifactId>
+            <artifactId>exmp-queue-receiver-service</artifactId>
             <version>${version}</version>
         </dependency>
 
