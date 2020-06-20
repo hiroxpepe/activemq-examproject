@@ -7,10 +7,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import org.examproject.messaging.OrderMessageSender;
-import org.examproject.model.InventoryResponse;
+//import org.examproject.messaging.OrderMessageSender;
+import org.examproject.model.Response;
 import org.examproject.model.Order;
 import org.examproject.model.OrderStatus;
+import org.examproject.service.MessageSender;
 import org.examproject.service.OrderRepository;
 import org.examproject.service.OrderService;
 import org.examproject.util.BasicUtil;
@@ -24,7 +25,8 @@ public class OrderServiceImpl implements OrderService {
     static final Logger LOG = LoggerFactory.getLogger(OrderServiceImpl.class);
 
     @Autowired
-    OrderMessageSender messageSender;
+    //OrderMessageSender messageSender;
+    MessageSender<Order> messageSender;
 
     @Autowired
     OrderRepository orderRepository;
@@ -41,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void updateOrder(InventoryResponse response) {
+    public void updateOrder(Response response) {
         Order order = orderRepository.getOrder(response.getOrderId());
         if (response.getReturnCode() == 200) {
             order.setStatus(OrderStatus.CONFIRMED);

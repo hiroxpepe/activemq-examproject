@@ -8,14 +8,12 @@ import lombok.Data;
  * @author h.adachi
  */
 @Data
-public class Order implements Serializable {
+public class Response implements Serializable {
 
     private String orderId;
 
-    private String productName;
+    private int returnCode;
 
-    private int quantity;
-
-    private OrderStatus status;
+    private String comment;
 
 }
