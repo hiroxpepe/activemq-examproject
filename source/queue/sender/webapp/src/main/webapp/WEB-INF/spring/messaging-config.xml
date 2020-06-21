@@ -20,15 +20,27 @@
         <constructor-arg ref="amqConnectionFactory" />
     </bean>
 
+    <!-- for send the message -->
+
     <!--  Default Destination Queue Definition-->
     <bean id="defaultDestination" class="org.apache.activemq.command.ActiveMQQueue">
-        <constructor-arg name="name" value="${jms.queue.name}"/>
+        <constructor-arg name="name" value="${jms.queue.name.order}"/>
     </bean>
 
     <!-- JmsTemplate Definition -->
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
         <property name="connectionFactory" ref="connectionFactory" />
         <property name="defaultDestination" ref="defaultDestination" />
+    </bean>
+
+    <!-- for receiving the message -->
+
+    <jms:annotation-driven />
+
+    <!-- ContainerFactory Definition -->
+    <bean id="containerFactory" class="org.springframework.jms.config.DefaultJmsListenerContainerFactory">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="concurrency" value="3-10"/>
     </bean>
 
 </beans>

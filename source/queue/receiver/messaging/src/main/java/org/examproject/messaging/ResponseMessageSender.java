@@ -18,7 +18,7 @@ import org.examproject.service.MessageSender;
 @Component("responseMessageSender")
 public class ResponseMessageSender implements MessageSender<Response> {
 
-    //@Autowired
+    @Autowired
     JmsTemplate jmsTemplate;
 
     ///////////////////////////////////////////////////////////////////////////

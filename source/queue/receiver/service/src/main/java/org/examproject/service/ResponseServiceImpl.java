@@ -26,6 +26,9 @@ public class ResponseServiceImpl implements ResponseService {
         messageSender.send(response);
     }
 
+    ///////////////////////////////////////////////////////////////////////////
+    // private methods
+
     private Response prepareResponse(Order order) {
         Response response = new Response();
         response.setOrderId(order.getOrderId());

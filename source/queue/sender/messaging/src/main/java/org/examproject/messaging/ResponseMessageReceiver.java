@@ -9,35 +9,29 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.stereotype.Component;
 
-import org.examproject.model.Order;
-import org.examproject.service.ResponseService;
+import org.examproject.model.Response;
+//import org.examproject.service.OrderInventoryService;
 
-/**
- * @author h.adachi
- */
 @Slf4j
-@Component("orderMessageReceiver")
-public class OrderMessageReceiver {
+@Component("responseMessageReceiver")
+public class ResponseMessageReceiver {
 
-    ///////////////////////////////////////////////////////////////////////////
-    // Field
-
-    @Autowired
-    ResponseService responseService;
+    //@Autowired
+    //OrderInventoryService orderInventoryService;
 
     ///////////////////////////////////////////////////////////////////////////
     // public methods
 
-    @JmsListener(destination="order-queue", containerFactory="containerFactory")
-    public void receiveMessage(final Message<Order> message) throws JMSException {
+    @JmsListener(destination="response-queue", containerFactory="containerFactory")
+    public void receiveMessage(final Message<Response> message) throws JMSException {
         log.info("----------------------------------------------------");
         MessageHeaders headers = message.getHeaders();
         log.info("Application : headers received : {}", headers);
 
-        Order order = message.getPayload();
-        log.info("Application : product : {}", order);
+        Response response = message.getPayload();
+        log.info("Application : product : {}", response);
 
-        responseService.processBy(order);
+        //orderInventoryService.processOrder(response);
         log.info("----------------------------------------------------");
     }
 
