@@ -18,6 +18,10 @@
     <modules>
         <module>queue/receiver/webapp</module>
         <module>queue/sender//webapp</module>
+        <module>queue/receiver/mvc</module>
+        <module>queue/sender/mvc</module>
+        <module>queue/receiver/messaging</module>
+        <module>queue/sender/messaging</module>
         <module>queue/receiver/service</module>
         <module>queue/sender/service</module>
         <module>service</module>
