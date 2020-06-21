@@ -9,18 +9,21 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.stereotype.Component;
 
-import org.examproject.model.Response;
-//import org.examproject.service.OrderInventoryService;
+import org.examproject.entity.Response;
+import org.examproject.service.OrderService;
 
 @Slf4j
 @Component("responseMessageReceiver")
 public class ResponseMessageReceiver {
 
-    //@Autowired
-    //OrderInventoryService orderInventoryService;
+    ///////////////////////////////////////////////////////////////////////////
+    // Fields
+
+    @Autowired
+    OrderService orderService;
 
     ///////////////////////////////////////////////////////////////////////////
-    // public methods
+    // public Methods
 
     @JmsListener(destination="response-queue", containerFactory="containerFactory")
     public void receiveMessage(final Message<Response> message) throws JMSException {
@@ -31,7 +34,7 @@ public class ResponseMessageReceiver {
         Response response = message.getPayload();
         log.info("Application : product : {}", response);
 
-        //orderInventoryService.processOrder(response);
+        orderService.updateBy(response);
         log.info("----------------------------------------------------");
     }
 

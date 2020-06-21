@@ -9,7 +9,7 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.stereotype.Component;
 
-import org.examproject.model.Order;
+import org.examproject.entity.Order;
 import org.examproject.service.ResponseService;
 
 /**
@@ -20,13 +20,13 @@ import org.examproject.service.ResponseService;
 public class OrderMessageReceiver {
 
     ///////////////////////////////////////////////////////////////////////////
-    // Field
+    // Fields
 
     @Autowired
     ResponseService responseService;
 
     ///////////////////////////////////////////////////////////////////////////
-    // public methods
+    // public Methods
 
     @JmsListener(destination="order-queue", containerFactory="containerFactory")
     public void receiveMessage(final Message<Order> message) throws JMSException {

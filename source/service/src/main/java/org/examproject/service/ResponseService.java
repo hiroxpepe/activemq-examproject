@@ -1,6 +1,6 @@
 package org.examproject.service;
 
-import org.examproject.model.Order;
+import org.examproject.entity.Order;
 
 /**
  * @author h.adachi

@@ -1,4 +1,4 @@
-package org.examproject.model;
+package org.examproject.value;
 
 /**
  * @author h.adachi

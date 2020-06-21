@@ -2,8 +2,8 @@ package org.examproject.service;
 
 import java.util.Map;
 
-import org.examproject.model.Response;
-import org.examproject.model.Order;
+import org.examproject.entity.Response;
+import org.examproject.entity.Order;
 
 /**
  * @author h.adachi

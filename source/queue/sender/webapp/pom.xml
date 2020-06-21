@@ -54,6 +54,13 @@
             <version>5.15.13</version>
         </dependency>
 
+        <!-- HSQLDB -->
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
     </dependencies>
 
     <pluginRepositories>

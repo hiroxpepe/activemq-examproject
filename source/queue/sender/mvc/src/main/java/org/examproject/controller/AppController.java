@@ -11,7 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import org.examproject.model.Order;
+import org.examproject.entity.Order;
 import org.examproject.service.OrderService;
 
 /**
@@ -22,11 +22,14 @@ import org.examproject.service.OrderService;
 @Controller
 public class AppController {
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Fields
+
     @NonNull
     private final OrderService orderService;
 
     ///////////////////////////////////////////////////////////////////////////
-    // public methods
+    // public Methods
 
     @RequestMapping(
         value="/home.html",

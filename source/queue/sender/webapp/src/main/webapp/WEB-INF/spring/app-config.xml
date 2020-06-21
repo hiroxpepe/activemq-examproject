@@ -9,8 +9,9 @@
 
     <context:component-scan base-package="org.examproject" />
 
-    <context:property-placeholder location="classpath:app.properties" />
+    <context:property-placeholder location="classpath:env.properties" />
 
+    <import resource="data-config.xml" />
     <import resource="messaging-config.xml" />
 
 </beans>

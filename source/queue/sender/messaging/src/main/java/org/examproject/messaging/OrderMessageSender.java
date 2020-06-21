@@ -11,7 +11,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Component;
 
-import org.examproject.model.Order;
+import org.examproject.entity.Order;
 import org.examproject.service.MessageSender;
 
 /**
@@ -21,11 +21,14 @@ import org.examproject.service.MessageSender;
 @Component("orderMessageSender")
 public class OrderMessageSender implements MessageSender<Order>{
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Fields
+
     @Autowired
     JmsTemplate jmsTemplate;
 
     ///////////////////////////////////////////////////////////////////////////
-    // public methods
+    // public Methods
 
     public void send(final Order order) {
         jmsTemplate.send(new MessageCreator() {

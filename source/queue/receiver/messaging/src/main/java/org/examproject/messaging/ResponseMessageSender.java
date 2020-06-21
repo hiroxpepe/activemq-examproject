@@ -11,18 +11,21 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Component;
 
-import org.examproject.model.Response;
+import org.examproject.entity.Response;
 import org.examproject.service.MessageSender;
 
 @Slf4j
 @Component("responseMessageSender")
 public class ResponseMessageSender implements MessageSender<Response> {
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Fields
+
     @Autowired
     JmsTemplate jmsTemplate;
 
     ///////////////////////////////////////////////////////////////////////////
-    // public methods
+    // public Methods
 
     public void send(final Response response) {
         jmsTemplate.send(new MessageCreator() {

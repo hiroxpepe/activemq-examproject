@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class AppController {
 
     ///////////////////////////////////////////////////////////////////////////
-    // public methods
+    // public Methods
 
     @RequestMapping(
         value="/home.html",

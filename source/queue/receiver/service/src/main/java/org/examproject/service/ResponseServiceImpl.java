@@ -4,18 +4,21 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import org.examproject.model.Response;
-import org.examproject.model.Order;
+import org.examproject.entity.Response;
+import org.examproject.entity.Order;
 
 @Slf4j
 @Service("responseService")
 public class ResponseServiceImpl implements ResponseService {
 
+    ///////////////////////////////////////////////////////////////////////////
+    // Fields
+
     @Autowired
     MessageSender<Response> messageSender;
 
     ///////////////////////////////////////////////////////////////////////////
-    // public methods
+    // public Methods
 
     @Override
     public void processBy(Order order) {
@@ -27,7 +30,7 @@ public class ResponseServiceImpl implements ResponseService {
     }
 
     ///////////////////////////////////////////////////////////////////////////
-    // private methods
+    // private Methods
 
     private Response prepareResponse(Order order) {
         Response response = new Response();
