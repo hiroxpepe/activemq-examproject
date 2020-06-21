@@ -57,7 +57,6 @@
     </dependencies>
 
     <build>
-        <!-- Name of the generated WAR file -->
         <finalName>${name}-${version}</finalName>
         <plugins>
             <plugin>

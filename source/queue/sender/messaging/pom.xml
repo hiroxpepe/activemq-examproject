@@ -107,7 +107,6 @@
     </repositories>
 
     <build>
-        <!-- Name of the generated JAR file -->
         <finalName>${name}-${version}</finalName>
         <plugins>
             <plugin>

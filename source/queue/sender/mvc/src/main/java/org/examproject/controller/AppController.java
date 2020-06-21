@@ -77,7 +77,7 @@ public class AppController {
         }
         orderService.send(order);
         model.addAttribute("success", "Order for " + order.getProductName() + " registered.");
-        return "ordersuccess";
+        return "orderSuccess";
     }
 
     @RequestMapping(
