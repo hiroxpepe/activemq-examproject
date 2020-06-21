@@ -24,9 +24,9 @@ import org.examproject.entity.Order;
  */
 public interface OrderService {
 
-    public void send(Order order);
+    void send(Order order);
 
-    public void updateBy(Response response);
+    void updateBy(Response response);
 
-    public Map<String, Order> getAll();
+    Map<String, Order> getAll();
 }

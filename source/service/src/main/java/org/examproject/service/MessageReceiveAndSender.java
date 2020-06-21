@@ -21,7 +21,7 @@ import org.springframework.messaging.Message;
 /**
  * @author h.adachi
  */
-public interface MessageReceiveAndSebder<R, S> {
+public interface MessageReceiveAndSender<R, S> {
 
     void receive(final Message<R> message) throws JMSException;
 

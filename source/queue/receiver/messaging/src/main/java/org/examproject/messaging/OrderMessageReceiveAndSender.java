@@ -18,36 +18,37 @@ import javax.jms.JMSException;
 import javax.jms.ObjectMessage;
 import javax.jms.Session;
 
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.core.MessageCreator;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.stereotype.Component;
 
 import org.examproject.entity.Order;
 import org.examproject.entity.Response;
-import org.examproject.service.MessageReceiveAndSebder;
 import org.examproject.service.ResponseService;
+import org.examproject.service.MessageReceiveAndSender;
 
 /**
  * @author h.adachi
  */
 @Slf4j
+@RequiredArgsConstructor
 @Component("orderMessageReceiveAndSender")
-public class OrderMessageReceiveAndSender implements MessageReceiveAndSebder<Order, Response> {
+public class OrderMessageReceiveAndSender implements MessageReceiveAndSender<Order, Response> {
 
     ///////////////////////////////////////////////////////////////////////////
     // Fields
 
-    @Autowired
-    private ApplicationContext context;
+    @NonNull
+    private final ApplicationContext context;
 
-    @Autowired
-    JmsTemplate jmsTemplate;
+    @NonNull
+    private final JmsTemplate jmsTemplate;
 
     ///////////////////////////////////////////////////////////////////////////
     // public Methods
@@ -58,10 +59,8 @@ public class OrderMessageReceiveAndSender implements MessageReceiveAndSebder<Ord
         log.info("----------------------------------------------------");
         MessageHeaders headers = message.getHeaders();
         log.info("Application : headers received : {}", headers);
-
         Order order = message.getPayload();
         log.info("Application : product : {}", order);
-
         ResponseService responseService = context.getBean(ResponseService.class);
         responseService.processBy(order);
         log.info("----------------------------------------------------");
@@ -72,12 +71,9 @@ public class OrderMessageReceiveAndSender implements MessageReceiveAndSebder<Ord
         log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("Inventory : sending order confirmation {}", response);
         jmsTemplate.setDefaultDestinationName("response-queue");
-        jmsTemplate.send(new MessageCreator() {
-            @Override
-            public javax.jms.Message createMessage(Session session) throws JMSException {
-                ObjectMessage objectMessage = session.createObjectMessage(response);
-                return objectMessage;
-            }
+        jmsTemplate.send((Session session) -> {
+            ObjectMessage objectMessage = session.createObjectMessage(response);
+            return objectMessage;
         });
         log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }

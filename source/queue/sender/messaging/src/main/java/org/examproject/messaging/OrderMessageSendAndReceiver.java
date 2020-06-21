@@ -19,12 +19,11 @@ import javax.jms.ObjectMessage;
 import javax.jms.Session;
 
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.core.MessageCreator;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.stereotype.Component;
@@ -38,17 +37,18 @@ import org.examproject.service.OrderService;
  * @author h.adachi
  */
 @Slf4j
+@RequiredArgsConstructor
 @Component("orderMessageSendAndReceiver")
 public class OrderMessageSendAndReceiver implements MessageSendAndReceiver<Order, Response>{
 
     ///////////////////////////////////////////////////////////////////////////
     // Fields
 
-    @Autowired
-    private ApplicationContext context;
+    @NonNull
+    private final ApplicationContext context;
 
-    @Autowired
-    private JmsTemplate jmsTemplate;
+    @NonNull
+    private final JmsTemplate jmsTemplate;
 
     ///////////////////////////////////////////////////////////////////////////
     // public Methods
@@ -58,12 +58,9 @@ public class OrderMessageSendAndReceiver implements MessageSendAndReceiver<Order
         log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("Application : sending order request {}", order);
         jmsTemplate.setDefaultDestinationName("order-queue");
-        jmsTemplate.send(new MessageCreator() {
-            @Override
-            public javax.jms.Message createMessage(Session session) throws JMSException {
-                ObjectMessage objectMessage = session.createObjectMessage(order);
-                return objectMessage;
-            }
+        jmsTemplate.send((Session session) -> {
+            ObjectMessage objectMessage = session.createObjectMessage(order);
+            return objectMessage;
         });
         log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
@@ -74,10 +71,8 @@ public class OrderMessageSendAndReceiver implements MessageSendAndReceiver<Order
         log.info("----------------------------------------------------");
         MessageHeaders headers = message.getHeaders();
         log.info("Application : headers received : {}", headers);
-
         Response response = message.getPayload();
         log.info("Application : product : {}", response);
-
         OrderService orderService = context.getBean(OrderService.class);
         orderService.updateBy(response);
         log.info("----------------------------------------------------");

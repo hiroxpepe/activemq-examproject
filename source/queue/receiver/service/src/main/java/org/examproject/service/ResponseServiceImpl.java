@@ -14,22 +14,24 @@
 
 package org.examproject.service;
 
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import org.examproject.entity.Response;
 import org.examproject.entity.Order;
 
 @Slf4j
+@RequiredArgsConstructor
 @Service("responseService")
 public class ResponseServiceImpl implements ResponseService {
 
     ///////////////////////////////////////////////////////////////////////////
     // Fields
 
-    @Autowired
-    MessageReceiveAndSebder<Order, Response> messageSender;
+    @NonNull
+    private final MessageReceiveAndSender<Order, Response> messageReceiveAndSender;
 
     ///////////////////////////////////////////////////////////////////////////
     // public Methods
@@ -38,7 +40,7 @@ public class ResponseServiceImpl implements ResponseService {
     public void processBy(Order order) {
         // Perform any business logic.
         Response response = prepareResponse(order);
-        messageSender.send(response);
+        messageReceiveAndSender.send(response);
     }
 
     ///////////////////////////////////////////////////////////////////////////

@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
     // Fields
 
     @NonNull
-    private final MessageSendAndReceiver<Order, Response>/*MessageSender<Order>*/ messageSender;
+    private final MessageSendAndReceiver<Order, Response> messageSendAndReceiver;
 
     @NonNull
     private final OrderRepository orderRepository;
@@ -55,7 +55,7 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderId(CommonUtil.getUniqueId());
         order.setStatus(OrderStatus.CREATED.getName());
         orderRepository.save(order);
-        messageSender.send(order);
+        messageSendAndReceiver.send(order);
     }
 
     @Override

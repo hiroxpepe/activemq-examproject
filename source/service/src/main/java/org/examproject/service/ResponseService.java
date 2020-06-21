@@ -21,6 +21,6 @@ import org.examproject.entity.Order;
  */
 public interface ResponseService {
 
-    public void processBy(Order order);
+    void processBy(Order order);
 
 }
