@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
     // Fields
 
     @NonNull
-    private final MessageSender<Order> messageSender;
+    private final MessageSendAndReceiver<Order, Response>/*MessageSender<Order>*/ messageSender;
 
     @NonNull
     private final OrderRepository orderRepository;
@@ -52,13 +52,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional
     public void send(Order order) {
-        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
         order.setOrderId(CommonUtil.getUniqueId());
         order.setStatus(OrderStatus.CREATED.getName());
         orderRepository.save(order);
-        log.info("Application : sending order request {}", order);
         messageSender.send(order);
-        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
 
     @Override

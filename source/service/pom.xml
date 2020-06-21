@@ -10,6 +10,7 @@
     <name>service</name>
 
     <properties>
+        <spring.version>5.2.6.RELEASE</spring.version>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -23,6 +24,23 @@
             <groupId>org.examproject.activemq</groupId>
             <artifactId>exmp-model</artifactId>
             <version>${version}</version>
+        </dependency>
+
+        <!--///////////////////////////////////////////////////////////////////////////-->
+        <!-- OSS LIB-->
+
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- JMS -->
+        <dependency>
+            <groupId>javax.jms</groupId>
+            <artifactId>javax.jms-api</artifactId>
+            <version>2.0.1</version>
         </dependency>
 
     </dependencies>

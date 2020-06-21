@@ -14,11 +14,16 @@
 
 package org.examproject.service;
 
+import javax.jms.JMSException;
+
+import org.springframework.messaging.Message;
+
 /**
  * @author h.adachi
  */
-public interface MessageSender<T> {
+public interface MessageReceiveAndSebder<R, S> {
 
-    void send(T type);
+    void receive(final Message<R> message) throws JMSException;
 
+    void send(S type);
 }

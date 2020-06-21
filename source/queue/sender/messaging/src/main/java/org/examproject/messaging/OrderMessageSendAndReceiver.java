@@ -15,32 +15,62 @@
 package org.examproject.messaging;
 
 import javax.jms.JMSException;
+import javax.jms.ObjectMessage;
+import javax.jms.Session;
 
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.jms.annotation.JmsListener;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.stereotype.Component;
 
+import org.examproject.entity.Order;
 import org.examproject.entity.Response;
+import org.examproject.service.MessageSendAndReceiver;
 import org.examproject.service.OrderService;
 
+/**
+ * @author h.adachi
+ */
 @Slf4j
-@Component("responseMessageReceiver")
-public class ResponseMessageReceiver {
+@Component("orderMessageSendAndReceiver")
+public class OrderMessageSendAndReceiver implements MessageSendAndReceiver<Order, Response>{
 
     ///////////////////////////////////////////////////////////////////////////
     // Fields
 
     @Autowired
-    OrderService orderService;
+    private ApplicationContext context;
+
+    @Autowired
+    private JmsTemplate jmsTemplate;
 
     ///////////////////////////////////////////////////////////////////////////
     // public Methods
 
+    @Override
+    public void send(final Order order) {
+        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        log.info("Application : sending order request {}", order);
+        jmsTemplate.setDefaultDestinationName("order-queue");
+        jmsTemplate.send(new MessageCreator() {
+            @Override
+            public javax.jms.Message createMessage(Session session) throws JMSException {
+                ObjectMessage objectMessage = session.createObjectMessage(order);
+                return objectMessage;
+            }
+        });
+        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    }
+
+    @Override
     @JmsListener(destination="response-queue", containerFactory="containerFactory")
-    public void receiveMessage(final Message<Response> message) throws JMSException {
+    public void receive(final Message<Response> message) throws JMSException {
         log.info("----------------------------------------------------");
         MessageHeaders headers = message.getHeaders();
         log.info("Application : headers received : {}", headers);
@@ -48,6 +78,7 @@ public class ResponseMessageReceiver {
         Response response = message.getPayload();
         log.info("Application : product : {}", response);
 
+        OrderService orderService = context.getBean(OrderService.class);
         orderService.updateBy(response);
         log.info("----------------------------------------------------");
     }
