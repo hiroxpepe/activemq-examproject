@@ -15,6 +15,9 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     private final Map<String, Order> orderMap = new ConcurrentHashMap<String, Order>();
 
+    ///////////////////////////////////////////////////////////////////////////
+    // public methods
+
     @Override
     public void put(Order order) {
         orderMap.put(order.getOrderId(), order);

@@ -2,23 +2,21 @@ package org.examproject.service;
 
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import org.examproject.model.Response;
 import org.examproject.model.Order;
 import org.examproject.model.OrderStatus;
-import org.examproject.util.BasicUtil;
+import org.examproject.util.CommonUtil;
 
 /**
  * @author h.adachi
  */
+@Slf4j
 @Service("orderService")
 public class OrderServiceImpl implements OrderService {
-
-    static final Logger LOG = LoggerFactory.getLogger(OrderServiceImpl.class);
 
     @Autowired
     MessageSender<Order> messageSender;
@@ -26,15 +24,18 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     OrderRepository orderRepository;
 
+    ///////////////////////////////////////////////////////////////////////////
+    // public methods
+
     @Override
     public void send(Order order) {
-        LOG.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        order.setOrderId(BasicUtil.getUniqueId());
+        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        order.setOrderId(CommonUtil.getUniqueId());
         order.setStatus(OrderStatus.CREATED);
         orderRepository.put(order);
-        LOG.info("Application : sending order request {}", order);
+        log.info("Application : sending order request {}", order);
         messageSender.send(order);
-        LOG.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
 
     @Override
@@ -50,6 +51,7 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.put(order);
     }
 
+    @Override
     public Map<String, Order> getAll() {
         return orderRepository.getAll();
     }

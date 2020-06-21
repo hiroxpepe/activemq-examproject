@@ -2,7 +2,10 @@ package org.examproject.util;
 
 import java.util.UUID;
 
-public class BasicUtil {
+/**
+ * @author h.adachi
+ */
+public class CommonUtil {
     public static String getUniqueId() {
         return UUID.randomUUID().toString();
     }

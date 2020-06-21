@@ -5,6 +5,7 @@ import javax.jms.Message;
 import javax.jms.ObjectMessage;
 import javax.jms.Session;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -16,11 +17,15 @@ import org.examproject.service.MessageSender;
 /**
  * @author h.adachi
  */
+@Slf4j
 @Component("orderMessageSender")
 public class OrderMessageSender implements MessageSender<Order>{
 
     @Autowired
     JmsTemplate jmsTemplate;
+
+    ///////////////////////////////////////////////////////////////////////////
+    // public methods
 
     public void send(final Order order) {
         jmsTemplate.send(new MessageCreator() {
