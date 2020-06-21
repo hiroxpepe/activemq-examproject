@@ -58,7 +58,7 @@ public class AppController {
         if (result.hasErrors()) {
             return "order";
         }
-        orderService.sendOrder(order);
+        orderService.send(order);
         model.addAttribute("success", "Order for " + order.getProductName() + " registered.");
         return "ordersuccess";
     }
@@ -68,7 +68,7 @@ public class AppController {
         method=RequestMethod.GET
     )
     public String checkOrderStatus(ModelMap model) {
-        model.addAttribute("orders", orderService.getAllOrders());
+        model.addAttribute("orders", orderService.getAll());
         return "orderStatus";
     }
 

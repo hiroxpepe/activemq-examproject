@@ -19,7 +19,7 @@ public class ResponseMessageSender implements MessageSender<Response> {
     //@Autowired
     JmsTemplate jmsTemplate;
 
-    public void sendMessage(final Response response) {
+    public void send(final Response response) {
         jmsTemplate.send(new MessageCreator() {
             @Override
             public Message createMessage(Session session) throws JMSException {

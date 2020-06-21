@@ -10,9 +10,9 @@ import org.examproject.model.Order;
  */
 public interface OrderService {
 
-    public void sendOrder(Order order);
+    public void send(Order order);
 
-    public void updateOrder(Response response);
+    public void updateBy(Response response);
 
-    public Map<String, Order> getAllOrders();
+    public Map<String, Order> getAll();
 }

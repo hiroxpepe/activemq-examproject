@@ -7,6 +7,6 @@ package org.examproject.service;
  */
 public interface MessageSender<T> {
 
-    void sendMessage(T type);
+    void send(T type);
 
 }

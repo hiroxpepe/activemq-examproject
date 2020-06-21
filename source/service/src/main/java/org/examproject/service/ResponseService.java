@@ -7,6 +7,6 @@ import org.examproject.model.Order;
  */
 public interface ResponseService {
 
-    public void processOrder(Order order);
+    public void processBy(Order order);
 
 }

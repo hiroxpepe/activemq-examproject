@@ -22,7 +22,7 @@ public class OrderMessageSender implements MessageSender<Order>{
     @Autowired
     JmsTemplate jmsTemplate;
 
-    public void sendMessage(final Order order) {
+    public void send(final Order order) {
         jmsTemplate.send(new MessageCreator() {
             @Override
             public Message createMessage(Session session) throws JMSException {
