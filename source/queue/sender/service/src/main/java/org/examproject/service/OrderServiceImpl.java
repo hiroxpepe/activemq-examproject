@@ -1,3 +1,17 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.examproject.service;
 
 import java.util.Map;
@@ -50,7 +64,6 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional
     public void updateBy(Response response) {
-        int i = 0;
         Order order = orderRepository.findByOrderId(response.getOrderId());
         if (response.getReturnCode() == 200) {
             order.setStatus(OrderStatus.CONFIRMED.getName());
@@ -65,12 +78,6 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional
     public Map<String, Order> getAll() {
-//        Map<String, Order> orderMap = orderRepository.findAll().stream().collect(
-//            Collectors.toMap(
-//                order -> order.getOrderId(),
-//                order -> order
-//            )
-//        );
         return orderRepository.findAll().stream().collect(
             Collectors.toMap(
                 order -> order.getOrderId(),
