@@ -50,12 +50,16 @@ public class OrderServiceImpl implements OrderService {
     // public Methods
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void send(Order order) {
         order.setOrderId(CommonUtil.getUniqueId());
         order.setStatus(OrderStatus.CREATED.getName());
         orderRepository.save(order);
-        messageSendAndReceiver.send(order);
+        try {
+            messageSendAndReceiver.send(order);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

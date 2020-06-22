@@ -23,7 +23,7 @@ import org.springframework.messaging.Message;
  */
 public interface MessageSendAndReceiver<S, R> {
 
-    void send(S type);
+    void send(S type) throws JMSException;
 
     void receive(final Message<R> message) throws JMSException;
 

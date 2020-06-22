@@ -22,6 +22,9 @@ import org.springframework.stereotype.Service;
 import org.examproject.entity.Response;
 import org.examproject.entity.Order;
 
+/**
+ * @author h.adachi
+ */
 @Slf4j
 @RequiredArgsConstructor
 @Service("responseService")
@@ -40,7 +43,11 @@ public class ResponseServiceImpl implements ResponseService {
     public void processBy(Order order) {
         // Perform any business logic.
         Response response = prepareResponse(order);
-        messageReceiveAndSender.send(response);
+        try {
+            messageReceiveAndSender.send(response);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     ///////////////////////////////////////////////////////////////////////////

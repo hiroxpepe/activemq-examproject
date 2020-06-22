@@ -54,7 +54,7 @@ public class OrderMessageSendAndReceiver implements MessageSendAndReceiver<Order
     // public Methods
 
     @Override
-    public void send(final Order order) {
+    public void send(final Order order) throws JMSException {
         log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("Application : sending order request {}", order);
         jmsTemplate.setDefaultDestinationName("order-queue");
@@ -65,8 +65,7 @@ public class OrderMessageSendAndReceiver implements MessageSendAndReceiver<Order
         log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
 
-    @Override
-    @JmsListener(destination="response-queue", containerFactory="containerFactory")
+    @Override @JmsListener(destination="response-queue", containerFactory="containerFactory")
     public void receive(final Message<Response> message) throws JMSException {
         log.info("----------------------------------------------------");
         MessageHeaders headers = message.getHeaders();

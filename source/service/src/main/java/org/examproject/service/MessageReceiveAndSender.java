@@ -25,5 +25,5 @@ public interface MessageReceiveAndSender<R, S> {
 
     void receive(final Message<R> message) throws JMSException;
 
-    void send(S type);
+    void send(S type) throws JMSException;
 }
