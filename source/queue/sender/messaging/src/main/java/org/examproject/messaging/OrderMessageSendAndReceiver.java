@@ -14,10 +14,6 @@
 
 package org.examproject.messaging;
 
-import javax.jms.JMSException;
-import javax.jms.ObjectMessage;
-import javax.jms.Session;
-
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -54,23 +50,21 @@ public class OrderMessageSendAndReceiver implements MessageSendAndReceiver<Order
     // public Methods
 
     @Override
-    public void send(final Order order) throws JMSException {
+    public void send(final Order order) {
         log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("Application : sending order request {}", order);
         jmsTemplate.setDefaultDestinationName("order-queue");
-        jmsTemplate.send((Session session) -> {
-            ObjectMessage objectMessage = session.createObjectMessage(order);
-            return objectMessage;
-        });
+        jmsTemplate.convertAndSend(order);
         log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
 
-    @Override @JmsListener(destination="response-queue", containerFactory="containerFactory")
-    public void receive(final Message<Response> message) throws JMSException {
+    @JmsListener(destination="response-queue", containerFactory="containerFactory")
+    @Override
+    public void receive(final Message<Response> message) {
         log.info("----------------------------------------------------");
         MessageHeaders headers = message.getHeaders();
-        log.info("Application : headers received : {}", headers);
         Response response = message.getPayload();
+        log.info("Application : headers received : {}", headers);
         log.info("Application : product : {}", response);
         OrderService orderService = context.getBean(OrderService.class);
         orderService.updateBy(response);

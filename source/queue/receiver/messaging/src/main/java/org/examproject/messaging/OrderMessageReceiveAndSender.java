@@ -14,10 +14,6 @@
 
 package org.examproject.messaging;
 
-import javax.jms.JMSException;
-import javax.jms.ObjectMessage;
-import javax.jms.Session;
-
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -53,12 +49,13 @@ public class OrderMessageReceiveAndSender implements MessageReceiveAndSender<Ord
     ///////////////////////////////////////////////////////////////////////////
     // public Methods
 
-    @Override @JmsListener(destination="order-queue", containerFactory="containerFactory")
-    public void receive(final Message<Order> message) throws JMSException {
+    @JmsListener(destination="order-queue", containerFactory="containerFactory")
+    @Override
+    public void receive(final Message<Order> message) {
         log.info("----------------------------------------------------");
         MessageHeaders headers = message.getHeaders();
-        log.info("Application : headers received : {}", headers);
         Order order = message.getPayload();
+        log.info("Application : headers received : {}", headers);
         log.info("Application : product : {}", order);
         ResponseService responseService = context.getBean(ResponseService.class);
         responseService.processBy(order);
@@ -66,14 +63,11 @@ public class OrderMessageReceiveAndSender implements MessageReceiveAndSender<Ord
     }
 
     @Override
-    public void send(final Response response) throws JMSException {
+    public void send(final Response response) {
         log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
         log.info("Inventory : sending order confirmation {}", response);
         jmsTemplate.setDefaultDestinationName("response-queue");
-        jmsTemplate.send((Session session) -> {
-            ObjectMessage objectMessage = session.createObjectMessage(response);
-            return objectMessage;
-        });
+        jmsTemplate.convertAndSend(response);
         log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
 

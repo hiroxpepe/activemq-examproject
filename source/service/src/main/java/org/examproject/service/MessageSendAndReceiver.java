@@ -14,8 +14,6 @@
 
 package org.examproject.service;
 
-import javax.jms.JMSException;
-
 import org.springframework.messaging.Message;
 
 /**
@@ -23,8 +21,8 @@ import org.springframework.messaging.Message;
  */
 public interface MessageSendAndReceiver<S, R> {
 
-    void send(S type) throws JMSException;
+    void send(S type);
 
-    void receive(final Message<R> message) throws JMSException;
+    void receive(final Message<R> message);
 
 }

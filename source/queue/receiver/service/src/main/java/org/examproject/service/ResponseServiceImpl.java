@@ -43,11 +43,7 @@ public class ResponseServiceImpl implements ResponseService {
     public void processBy(Order order) {
         // Perform any business logic.
         Response response = prepareResponse(order);
-        try {
-            messageReceiveAndSender.send(response);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        messageReceiveAndSender.send(response);
     }
 
     ///////////////////////////////////////////////////////////////////////////

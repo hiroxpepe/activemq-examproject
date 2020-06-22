@@ -55,11 +55,7 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderId(CommonUtil.getUniqueId());
         order.setStatus(OrderStatus.CREATED.getName());
         orderRepository.save(order);
-        try {
-            messageSendAndReceiver.send(order);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        messageSendAndReceiver.send(order);
     }
 
     @Override
