@@ -32,7 +32,7 @@
                 </tbody>
             </table>
             <span class="well floatRight">
-                <a href="<c:url value='/newOrder.html' />">Buy More</a>
+                <a href="<c:url value='/new/order.html' />">Buy More</a>
             </span>
         </div>
     </body>

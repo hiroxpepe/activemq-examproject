@@ -12,23 +12,15 @@
  * limitations under the License.
  */
 
-package org.examproject.repository;
+package org.examproject.service;
 
-import java.util.List;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-
-import org.examproject.entity.Order;
+import java.util.Map;
 
 /**
  * @author h.adachi
  */
-public interface OrderRepository extends JpaRepository<Order, Long> {
+public interface InventoryService {
 
-    public Order findByOrderId(String orderId);
-
-    @Query(value="SELECT SUM(o.quantity), o.productName FROM Order o GROUP BY o.productName")
-    public List<?> sumQuantityGroupByProductName();
+    Map<String, Long> getOrderCountMap();
 
 }

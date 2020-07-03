@@ -12,46 +12,42 @@
  * limitations under the License.
  */
 
-package org.examproject.controller;
+package org.examproject.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import org.examproject.service.InventoryService;
+import org.springframework.stereotype.Service;
+import org.examproject.repository.OrderRepository;
 
 /**
  * @author h.adachi
  */
 @Slf4j
 @RequiredArgsConstructor
-@Controller
-public class AppController {
+@Service("inventoryService")
+public class InventoryServiceImpl implements InventoryService {
 
     ///////////////////////////////////////////////////////////////////////////
     // Fields
 
     @NonNull
-    private final InventoryService inventoryService;
+    private final OrderRepository orderRepository;
 
     ///////////////////////////////////////////////////////////////////////////
     // public Methods
 
-    @RequestMapping(
-        value="/index.html",
-        method=RequestMethod.GET
-    )
-    public String prepareProduct(ModelMap model) {
-        Map<String, Long> map = inventoryService.getOrderCountMap();
-        log.info("map.size :" + map.size());
-        model.addAttribute("orderCountMap", map);
-        return "index";
+    @Override
+    public Map<String, Long> getOrderCountMap() {
+        Map<String, Long> countNameMap = new HashMap<>();
+        orderRepository.sumQuantityGroupByProductName().stream().map(o -> (Object[]) o)
+            .forEachOrdered((array) -> {
+                countNameMap.put((String) array[1], (Long) array[0]);
+            });
+        return countNameMap;
     }
 
 }

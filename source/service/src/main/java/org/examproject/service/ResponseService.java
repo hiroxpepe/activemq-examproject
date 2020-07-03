@@ -22,5 +22,4 @@ import org.examproject.entity.Order;
 public interface ResponseService {
 
     void processBy(Order order);
-
 }

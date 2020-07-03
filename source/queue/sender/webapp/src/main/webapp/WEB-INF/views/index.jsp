@@ -12,7 +12,7 @@
         <div class="generic-container">
             <div class="well lead">Welcome to the Shop</div>
             <span class="well floatRight">
-                <a href="<c:url value='/newOrder.html' />">Place an order</a>
+                <a href="<c:url value='/new/order.html' />">Place an order</a>
             </span>
         </div>
     </body>

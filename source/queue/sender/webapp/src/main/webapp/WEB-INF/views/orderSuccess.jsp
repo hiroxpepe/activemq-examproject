@@ -14,10 +14,10 @@
                 ${success}
             </div>
             <span class="well floatRight">
-                <a href="<c:url value='/newOrder.html' />">Buy More</a>
+                <a href="<c:url value='/new/order.html' />">Buy More</a>
             </span>
             <span class="well floatRight">
-                <a href="<c:url value='/checkStatus.html' />">Check Status</a>
+                <a href="<c:url value='/check/status.html' />">Check Status</a>
             </span>
         </div>
     </body>

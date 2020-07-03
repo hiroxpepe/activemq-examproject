@@ -46,15 +46,15 @@ public class AppController {
     // public Methods
 
     @RequestMapping(
-        value="/home.html",
+        value="/index.html",
         method=RequestMethod.GET
     )
     public String prepareProduct(ModelMap model) {
-        return "home";
+        return "index";
     }
 
     @RequestMapping(
-        value="/newOrder.html",
+        value="/new/order.html",
         method=RequestMethod.GET
     )
     public String prepareOrder(ModelMap model) {
@@ -64,7 +64,7 @@ public class AppController {
     }
 
     @RequestMapping(
-        value="/newOrder.html",
+        value="/new/order.html",
         method=RequestMethod.POST
     )
     public String sendOrder(
@@ -81,7 +81,7 @@ public class AppController {
     }
 
     @RequestMapping(
-        value="/checkStatus.html",
+        value="/check/status.html",
         method=RequestMethod.GET
     )
     public String checkOrderStatus(ModelMap model) {

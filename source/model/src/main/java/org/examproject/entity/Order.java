@@ -42,7 +42,7 @@ public class Order implements Serializable {
     @Column(name="order_id", unique=true)
     private String orderId;
 
-    @Column(name="product_name", unique=true, length=32)
+    @Column(name="product_name", length=32)
     private String productName;
 
     @Column(name="quantity")

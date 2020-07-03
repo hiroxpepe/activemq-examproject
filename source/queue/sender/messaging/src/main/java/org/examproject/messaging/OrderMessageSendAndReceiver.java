@@ -58,8 +58,8 @@ public class OrderMessageSendAndReceiver implements MessageSendAndReceiver<Order
         log.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
 
-    @JmsListener(destination="response-queue", containerFactory="containerFactory")
     @Override
+    @JmsListener(destination="response-queue", containerFactory="containerFactory")
     public void receive(final Message<Response> message) {
         log.info("----------------------------------------------------");
         MessageHeaders headers = message.getHeaders();

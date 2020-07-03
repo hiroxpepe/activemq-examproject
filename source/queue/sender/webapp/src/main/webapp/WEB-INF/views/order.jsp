@@ -37,7 +37,7 @@
                 </div>
                 <div class="row">
                     <div class="form-actions floatRight">
-                        <input type="submit" value="Place Order" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/home.html' />">Cancel</a>
+                        <input type="submit" value="Place Order" class="btn btn-primary btn-sm"/> or <a href="<c:url value='/index.html' />">Cancel</a>
                     </div>
                 </div>
             </form:form>

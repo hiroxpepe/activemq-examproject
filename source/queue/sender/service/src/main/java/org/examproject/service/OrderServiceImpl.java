@@ -20,9 +20,9 @@ import java.util.stream.Collectors;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import org.examproject.entity.Response;
 import org.examproject.entity.Order;
 import org.examproject.repository.OrderRepository;
@@ -73,7 +73,6 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    @Transactional
     public Map<String, Order> getAll() {
         return orderRepository.findAll().stream().collect(
             Collectors.toMap(
