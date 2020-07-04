@@ -46,17 +46,10 @@ public class AppController {
     // public Methods
 
     @RequestMapping(
-         value="/",
-         method=RequestMethod.GET)
-    public String index() {
-       return "index";
-    }
-
-    @RequestMapping(
-        value="/index.html",
+        value={"/", "/index.html"},
         method=RequestMethod.GET
     )
-    public String prepareProduct(ModelMap model) {
+    public String index(ModelMap model) {
         return "index";
     }
 
@@ -91,7 +84,7 @@ public class AppController {
         value="/check/status.html",
         method=RequestMethod.GET
     )
-    public String checkOrderStatus(ModelMap model) {
+    public String checkStatus(ModelMap model) {
         model.addAttribute("orders", orderService.getAll());
         return "orderStatus";
     }

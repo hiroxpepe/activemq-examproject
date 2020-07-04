@@ -44,14 +44,7 @@ public class AppController {
     // public Methods
 
     @RequestMapping(
-         value="/",
-         method=RequestMethod.GET)
-    public String index() {
-       return "index";
-    }
-
-    @RequestMapping(
-        value="/index.html",
+        value={"/", "/index.html"},
         method=RequestMethod.GET
     )
     public String prepareProduct(ModelMap model) {
