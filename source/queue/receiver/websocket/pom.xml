@@ -4,10 +4,10 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.examproject.activemq</groupId>
-    <artifactId>exmp-queue-receiver-service</artifactId>
+    <artifactId>exmp-queue-receiver-websocket</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
-    <name>queue-receiver-service</name>
+    <name>queue-receiver-websocket</name>
 
     <properties>
         <spring.version>5.2.6.RELEASE</spring.version>
@@ -29,20 +29,18 @@
             <version>${version}</version>
         </dependency>
 
-        <!-- queue-receiver-websocket FIXME: -->
-        <dependency>
-            <groupId>org.examproject.activemq</groupId>
-            <artifactId>exmp-queue-receiver-websocket</artifactId>
-            <version>${version}</version>
-        </dependency>
-
         <!--///////////////////////////////////////////////////////////////////////////-->
         <!-- OSS LIB-->
 
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
+            <artifactId>spring-jms</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
             <version>${spring.version}</version>
         </dependency>
 

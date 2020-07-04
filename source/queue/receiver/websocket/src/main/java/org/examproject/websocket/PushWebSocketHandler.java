@@ -12,43 +12,38 @@
  * limitations under the License.
  */
 
-package org.examproject.service;
+package org.examproject.websocket;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-
-import org.examproject.repository.OrderRepository;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
+import org.springframework.web.socket.WebSocketSession;
+import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 /**
  * @author h.adachi
  */
 @Slf4j
 @RequiredArgsConstructor
-@Service("inventoryService")
-public class InventoryServiceImpl implements InventoryService {
-
-    ///////////////////////////////////////////////////////////////////////////
-    // Fields
+@Component
+public class PushWebSocketHandler extends TextWebSocketHandler {
 
     @NonNull
-    private final OrderRepository orderRepository;
+    private final ApplicationContext context;
 
     ///////////////////////////////////////////////////////////////////////////
-    // public Methods
+    // public methods
 
     @Override
-    public Map<String, Long> getOrderCountMap() {
-        Map<String, Long> countNameMap = new HashMap<>();
-        orderRepository.sumQuantityGroupByProductName().stream().map(o -> (Object[]) o)
-            .forEachOrdered((array) -> {
-                countNameMap.put((String) array[1], (Long) array[0]);
-            });
-        return countNameMap;
+    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+        Map<String, WebSocketSession> webSocketSessions = context.getBean("concurrentHashMap", Map.class);
+        webSocketSessions.clear(); // FIXME:
+        webSocketSessions.put(session.getId(), session);
+        log.info("map.size: " + webSocketSessions.size());
     }
 
 }

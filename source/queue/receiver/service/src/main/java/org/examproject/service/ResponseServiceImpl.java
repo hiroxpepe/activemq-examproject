@@ -14,10 +14,16 @@
 
 package org.examproject.service;
 
+import java.io.IOException;
+import java.util.Map;
+
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
+import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketSession;
 
 import org.examproject.entity.Response;
 import org.examproject.entity.Order;
@@ -34,16 +40,29 @@ public class ResponseServiceImpl implements ResponseService {
     // Fields
 
     @NonNull
+    private final ApplicationContext context;
+
+    @NonNull
     private final MessageReceiveAndSender<Order, Response> messageReceiveAndSender;
 
     ///////////////////////////////////////////////////////////////////////////
     // public Methods
 
     @Override
-    public void processBy(Order order) {
-        // Perform any business logic.
+    public void processBy(Order order){
+        // perform any business logic.
         Response response = prepareResponse(order);
         messageReceiveAndSender.send(response);
+        // push the message to client.
+        Map<String, WebSocketSession> webSocketSessions = context.getBean("concurrentHashMap", Map.class);
+        log.info("map.size: " + webSocketSessions.size());
+        webSocketSessions.forEach((key, value) -> {
+            try {
+                value.sendMessage(new TextMessage("push"));
+            } catch (IOException ex) {
+                log.error(ex.getMessage()); // FIXME:
+            }
+        });
     }
 
     ///////////////////////////////////////////////////////////////////////////

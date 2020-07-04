@@ -19,6 +19,7 @@
         <module>source/queue/sender//webapp</module>
         <module>source/queue/receiver/mvc</module>
         <module>source/queue/sender/mvc</module>
+        <module>source/queue/receiver/websocket</module>
         <module>source/queue/receiver/messaging</module>
         <module>source/queue/sender/messaging</module>
         <module>source/queue/receiver/service</module>

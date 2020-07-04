@@ -4,10 +4,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <meta http-equiv="refresh" content="2; URL=">
         <title>Order System</title>
         <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
         <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+        <script type="text/javascript">
+            // open the web socket connection to the server
+            var ws = new WebSocket('ws://localhost:8082/endpoint');
+            // recive Message.
+            ws.onmessage = function(event) {
+                location.replace("http://localhost:8082/index.html");
+            }
+        </script>
     </head>
     <body>
         <div class="generic-container">
